@@ -1,13 +1,23 @@
 package com.d3if3058.assessment2.model
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 
-@Entity(tableName = "Task")
 data class Task(
-    @PrimaryKey(autoGenerate = true)
-    val id: Long = 0L,
-    val judul: String,
-    val isi: String,
-    val prioritas: String
+    val task_id: Int,
+    val title: String,
+    val deskripsi: String,
+    val status_prioritas: Int,
+    val image_id: String
+)
+
+data class TaskCreate(
+    val title: String,
+    val deskripsi: String,
+    val status_prioritas: Int
+)
+
+data class TaskUpdate(
+    val task_id: Int,
+    val title: String? = null,
+    val deskripsi: String? = null,
+    val status_prioritas: Int? = null
 )

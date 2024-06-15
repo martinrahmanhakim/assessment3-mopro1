@@ -9,7 +9,6 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.d3if3058.assessment2.screen.AboutScreen
 import com.d3if3058.assessment2.screen.DetailScreen
-import com.d3if3058.assessment2.screen.KEY_ID_TASK
 import com.d3if3058.assessment2.screen.MainScreen
 import com.d3if3058.assessment2.screen.WelcomeScreen
 
@@ -28,17 +27,25 @@ fun SetUpNavGraph(navController: NavHostController = rememberNavController()){
         composable(route = Screen.About.route){
             AboutScreen(navController)
         }
-        composable(route = Screen.FormBaru.route){
-            DetailScreen(navController)
+        composable(route = Screen.FormBaru.route,
+            arguments = listOf(
+            navArgument(KEY_ID_USER) {
+                type = NavType.IntType
+            }
+        )) {
+            val taskId = it.arguments!!.getInt(KEY_ID_USER)
+            DetailScreen(navController, taskId)
         }
         composable(
             route = Screen.FormUbah.route,
             arguments = listOf(
-                navArgument(KEY_ID_TASK){ type = NavType.LongType }
+                navArgument(KEY_ID_USER){ type = NavType.IntType },
+                navArgument(KEY_ID_TASK) { type = NavType.IntType }
             )
-        ) {navBackStackEntry ->
-            val id = navBackStackEntry.arguments?.getLong(KEY_ID_TASK)
-            DetailScreen(navController, id)
+        ) {
+            val userId = it.arguments!!.getInt(KEY_ID_USER)
+            val id = it.arguments!!.getInt(KEY_ID_TASK)
+            DetailScreen(navController, userId, id)
         }
     }
 }
