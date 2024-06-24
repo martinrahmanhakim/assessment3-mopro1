@@ -24,7 +24,7 @@
     <string name="bagikanTemplate">Judul Task: %1$s Isi Task: %2$s</string>
     <string name="bagikan">Bagikan</string>
     <string name="gambar_welcome">Ini Gambar Welcome</string>
-    <string name="kalimat_welcome">Selamat datang! \n Silakan untuk membuat To Do List anda dengan menekan tombol Get Started dibawah ini!</string>
+    <string name="kalimat_welcome">Selamat datang! \n Silakan untuk membuat To Do List anda dengan menekan tombol Mulai dibawah ini!</string>
     <string name="welcome">Selamat Datang</string>
     <string name="tentang_aplikasi">Tentang Aplikasi</string>
     <string name="gambar_fotoformal">Gambar foto formal</string>
