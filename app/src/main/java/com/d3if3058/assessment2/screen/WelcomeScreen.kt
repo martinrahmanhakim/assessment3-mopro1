@@ -4,10 +4,13 @@ import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -43,22 +46,13 @@ fun WelcomeScreen(navController: NavHostController){
                 ),
             )
         },
-        floatingActionButton = {
-            FloatingActionButton(onClick = { navController.navigate(Screen.Home.route)}) {
-                Icon(
-                    imageVector = Icons.Filled.ArrowForward,
-                    contentDescription = stringResource(id = R.string.tambah_task),
-                    tint = MaterialTheme.colorScheme.primary
-                )
-            }
-        }
     ){
-            paddingValues -> GambarWelcome(Modifier.padding(paddingValues))
+            paddingValues -> GambarWelcome(Modifier.padding(paddingValues), navController)
     }
 }
 
 @Composable
-fun GambarWelcome(modifier: Modifier){
+fun GambarWelcome(modifier: Modifier, navController: NavHostController){
     Column (
         modifier = modifier
             .fillMaxSize()
@@ -68,7 +62,7 @@ fun GambarWelcome(modifier: Modifier){
     )
     {
         Image(
-            painter = painterResource(id = R.drawable.welcome) ,
+            painter = painterResource(id = R.drawable.welcome),
             contentDescription = stringResource(id = R.string.gambar_welcome),
             modifier = Modifier.padding(bottom = 16.dp)
         )
@@ -78,6 +72,12 @@ fun GambarWelcome(modifier: Modifier){
             modifier = Modifier.padding(16.dp),
             textAlign = TextAlign.Center
         )
+
+        Spacer(modifier = Modifier.height(50.dp))
+        Button(onClick = { navController.navigate(Screen.Home.route) }) {
+            Text(text = stringResource(id = R.string.mulai))
+            
+        }
     }
 }
 
